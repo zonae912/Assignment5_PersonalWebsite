@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Evan Zona - Personal Portfolio{% endblock %}
+{% block description %}Personal portfolio showcasing skills, interests, and accomplishments in business and technology.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Welcome to My Portfolio
+            </h1>
+            <h2 class="hero-subtitle">
+                <span class="highlight">Evan Zona</span>
+            </h2>
+            <p class="hero-content">
+                MS Information Systems student at Indiana University's Kelley School of Business. 
+                Experienced technology consultant with expertise in AI implementation, strategic consulting, 
+                and leading Fortune 500 client engagements. Passionate about innovation and technology transformation.
+            </p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('about') }}" class="btn btn-primary">Learn More About Me</a>
+                <a href="{{ url_for('projects') }}" class="btn btn-secondary">View My Projects</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="profile-card">
+                <div class="profile-image">
+                    <img src="{{ url_for('static', filename='images/headshot.jpg') }}" alt="Evan Zona">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Overview Section -->
+<section class="quick-overview">
+    <div class="container">
+        <h2 class="section-title">Quick Overview</h2>
+        <div class="overview-grid">
+            <div class="overview-card">
+                <div class="card-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>About Me</h3>
+                <p>Learn about my background, interests, and professional journey.</p>
+                <a href="{{ url_for('about') }}" class="card-link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="overview-card">
+                <div class="card-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>Resume</h3>
+                <p>MS Information Systems (2026) and BS Informatics (2025) from Indiana University, plus consulting experience.</p>
+                <a href="{{ url_for('resume') }}" class="card-link">View Resume <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="overview-card">
+                <div class="card-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3>Projects</h3>
+                <p>AI implementation, technology consulting, and strategic development work from internships.</p>
+                <a href="{{ url_for('projects') }}" class="card-link">View Projects <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="overview-card">
+                <div class="card-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Contact</h3>
+                <p>Get in touch for opportunities, collaborations, or networking.</p>
+                <a href="{{ url_for('contact') }}" class="card-link">Contact Me <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Highlight -->
+<section class="skills-highlight">
+    <div class="container">
+        <h2 class="section-title">Core Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <i class="fab fa-python"></i>
+                <span>Python & SQL</span>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-robot"></i>
+                <span>AI Development</span>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Business Intelligence</span>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-users"></i>
+                <span>Team Leadership</span>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-cogs"></i>
+                <span>Agile Development</span>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-handshake"></i>
+                <span>Strategic Consulting</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

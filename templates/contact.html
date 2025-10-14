@@ -1,0 +1,317 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - Evan Zona{% endblock %}
+{% block description %}Get in touch with Evan Zona for professional opportunities, collaborations, or networking.{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>Contact Me</h1>
+        <p>Let's connect and explore opportunities for collaboration</p>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-main">
+    <div class="container">
+        <div class="contact-layout">
+            
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <p class="contact-intro">
+                    I'm always interested in new opportunities, technology consulting projects, and meaningful 
+                    professional connections. As an MS Information Systems student with experience in AI implementation 
+                    and Fortune 500 consulting, I'd love to discuss technology transformation initiatives, 
+                    strategic partnerships, or collaborative projects.
+                </p>
+
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="method-details">
+                            <h3>Email</h3>
+                            <p>For professional inquiries and technology consulting opportunities</p>
+                            <a href="mailto:evanbzona@gmail.com">evanbzona@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="method-details">
+                            <h3>LinkedIn</h3>
+                            <p>Connect with me on LinkedIn for professional networking</p>
+                            <a href="https://linkedin.com/in/evan-zona/" target="_blank">linkedin.com/in/evan-zona/</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="method-details">
+                            <h3>GitHub</h3>
+                            <p>View my projects and technical work</p>
+                            <a href="https://github.com/evanzona" target="_blank">github.com/evanzona</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="method-details">
+                            <h3>Phone</h3>
+                            <p>Available for scheduled calls and meetings</p>
+                            <a href="tel:847-975-8105">847-975-8105</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Best Times to Contact -->
+                <div class="contact-hours">
+                    <h3>Best Times to Reach Me</h3>
+                    <div class="hours-info">
+                        <div class="hours-item">
+                            <i class="fas fa-clock"></i>
+                            <span><strong>Weekdays:</strong> 9:00 AM - 6:00 PM CST</span>
+                        </div>
+                        <div class="hours-item">
+                            <i class="fas fa-calendar"></i>
+                            <span><strong>Response Time:</strong> Within 24 hours</span>
+                        </div>
+                        <div class="hours-item">
+                            <i class="fas fa-globe"></i>
+                            <span><strong>Time Zone:</strong> Eastern Standard Time (EST)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+                <h2>Send Me a Message</h2>
+                <p>Fill out the form below and I'll get back to you as soon as possible.</p>
+                
+                <form class="contact-form" action="{{ url_for('contact') }}" method="POST" id="contactForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                            <div class="error-message" id="firstNameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                            <div class="error-message" id="lastNameError"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required 
+                               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                               title="Please enter a valid email address">
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password *</label>
+                        <input type="password" id="password" name="password" required 
+                               minlength="8" 
+                               pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}"
+                               title="Password must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number">
+                        <div class="password-requirements">
+                            <small>Password must be at least 8 characters long and contain uppercase, lowercase, and number</small>
+                        </div>
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password *</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required 
+                               minlength="8"
+                               title="Please confirm your password">
+                        <div class="error-message" id="confirmPasswordError"></div>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">I'd like to receive updates about professional activities and projects</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+
+                    <p class="form-note">
+                        * Required fields. Your information will be kept confidential and used only for the purpose of responding to your inquiry.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Alternative Contact Methods -->
+<section class="alternative-contact">
+    <div class="container">
+        <h2 class="section-title">Other Ways to Connect</h2>
+        <div class="alt-contact-grid">
+            <div class="alt-contact-card">
+                <div class="alt-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3>Schedule a Meeting</h3>
+                <p>Book a 30-minute virtual coffee chat to discuss opportunities or projects</p>
+                <a href="#" class="btn btn-secondary">Schedule Meeting</a>
+            </div>
+
+            <div class="alt-contact-card">
+                <div class="alt-icon">
+                    <i class="fas fa-file-download"></i>
+                </div>
+                <h3>Download My Resume</h3>
+                <p>Get a copy of my latest resume with detailed experience and qualifications</p>
+                <a href="{{ url_for('resume') }}" class="btn btn-secondary">View Resume</a>
+            </div>
+
+            <div class="alt-contact-card">
+                <div class="alt-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Professional References</h3>
+                <p>Professional references available upon request for serious inquiries</p>
+                <a href="mailto:evanbzona@gmail.com?subject=Reference Request" class="btn btn-secondary">Request References</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="contact-faq">
+    <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>What type of opportunities are you looking for?</h3>
+                <p>I'm interested in business strategy roles, project management positions, and leadership opportunities where I can apply my analytical skills and collaborative approach to drive meaningful results.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Are you available for consulting projects?</h3>
+                <p>Yes, I'm open to discussing consulting opportunities, particularly in areas of business strategy, process optimization, and team leadership. Please reach out to discuss your specific needs.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Do you offer mentoring or career advice?</h3>
+                <p>I enjoy sharing knowledge and experiences with fellow professionals and students. I'm happy to provide guidance on career development, particularly in business and leadership fields.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What's the best way to reach you for urgent matters?</h3>
+                <p>For urgent professional matters, email is still the best method as I check it regularly. Please mark your email as urgent in the subject line, and I'll prioritize my response.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Form validation and error handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Clear previous errors
+        clearErrors();
+        
+        let isValid = true;
+        
+        // Validate First Name
+        const firstName = document.getElementById('firstName');
+        if (!firstName.value.trim()) {
+            showError('firstNameError', 'First name is required');
+            isValid = false;
+        }
+        
+        // Validate Last Name
+        const lastName = document.getElementById('lastName');
+        if (!lastName.value.trim()) {
+            showError('lastNameError', 'Last name is required');
+            isValid = false;
+        }
+        
+        // Validate Email
+        const email = document.getElementById('email');
+        const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+        if (!email.value.trim()) {
+            showError('emailError', 'Email address is required');
+            isValid = false;
+        } else if (!emailPattern.test(email.value)) {
+            showError('emailError', 'Please enter a valid email address');
+            isValid = false;
+        }
+        
+        // Validate Password
+        const password = document.getElementById('password');
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
+        if (!password.value) {
+            showError('passwordError', 'Password is required');
+            isValid = false;
+        } else if (password.value.length < 8) {
+            showError('passwordError', 'Password must be at least 8 characters long');
+            isValid = false;
+        } else if (!passwordPattern.test(password.value)) {
+            showError('passwordError', 'Password must contain at least one uppercase letter, one lowercase letter, and one number');
+            isValid = false;
+        }
+        
+        // Validate Confirm Password
+        const confirmPassword = document.getElementById('confirmPassword');
+        if (!confirmPassword.value) {
+            showError('confirmPasswordError', 'Please confirm your password');
+            isValid = false;
+        } else if (password.value !== confirmPassword.value) {
+            showError('confirmPasswordError', 'Passwords do not match');
+            isValid = false;
+        }
+        
+        // If validation fails, prevent submission
+        if (!isValid) {
+            e.preventDefault();
+        }
+    });
+    
+    function showError(elementId, message) {
+        const errorElement = document.getElementById(elementId);
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
+    }
+    
+    function clearErrors() {
+        const errorElements = document.querySelectorAll('.error-message');
+        errorElements.forEach(element => {
+            element.textContent = '';
+            element.style.display = 'none';
+        });
+    }
+    
+    // Real-time validation for password matching
+    document.getElementById('confirmPassword').addEventListener('input', function() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = this.value;
+        const errorElement = document.getElementById('confirmPasswordError');
+        
+        if (confirmPassword && password !== confirmPassword) {
+            showError('confirmPasswordError', 'Passwords do not match');
+        } else {
+            errorElement.style.display = 'none';
+        }
+    });
+</script>
+{% endblock %}

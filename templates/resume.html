@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Resume - Evan Zona{% endblock %}
+{% block description %}Evan Zona's professional resume including education, experience, skills, and achievements.{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>Resume</h1>
+        <p>Professional experience, education, skills, and achievements</p>
+        <div class="resume-actions">
+            <a href="{{ url_for('static', filename='Evan Zona Resume 250822.pdf') }}" class="btn btn-primary" target="_blank">
+                <i class="fas fa-download"></i> Download PDF
+            </a>
+            <a href="{{ url_for('static', filename='Evan Zona Resume 250822.pdf') }}" class="btn btn-secondary" target="_blank">
+                <i class="fas fa-external-link-alt"></i> View in New Tab
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Resume Content -->
+<section class="resume-content">
+    <div class="container">
+        <div class="pdf-viewer-container">
+            <iframe 
+                src="{{ url_for('static', filename='Evan Zona Resume 250822.pdf') }}" 
+                width="100%" 
+                height="800px" 
+                type="application/pdf"
+                title="Evan Zona Resume"
+                style="border: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <p>Your browser does not support PDFs. 
+                   <a href="{{ url_for('static', filename='Evan Zona Resume 250822.pdf') }}" target="_blank">Download the PDF</a> to view it.
+                </p>
+            </iframe>
+        </div>
+    </div>
+</section>
+{% endblock %}

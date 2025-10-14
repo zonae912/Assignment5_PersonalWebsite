@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block title %}About Me - Evan Zona{% endblock %}
+{% block description %}Learn more about Evan Zona - background, interests, goals, and professional journey.{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>About Me</h1>
+        <p>Get to know me better - my background, interests, and professional goals</p>
+    </div>
+</section>
+
+<!-- About Content -->
+<section class="about-detailed">
+    <div class="container">
+        <div class="about-grid">
+            <!-- Photo Section -->
+            <div class="about-photo">
+                <div class="photo-container">
+                    <img src="{{ url_for('static', filename='images/headshot.jpg') }}" alt="Evan Zona">
+                </div>
+            </div>
+            
+            <!-- Bio Section -->
+            <div class="about-bio">
+                <h2>My Story</h2>
+                <p class="intro-text">
+                    Welcome! I'm Evan Zona, a graduate student pursuing my Master of Science in Information Systems 
+                    at Indiana University's Kelley School of Business. With experience in technology consulting, 
+                    AI implementation, and strategic analysis for Fortune 500 clients, I'm passionate about leveraging 
+                    technology to drive innovation and create meaningful business impact.
+                </p>
+                
+                <h3>Background</h3>
+                <p>
+                    Originally from Barrington, Illinois, my academic journey led me to Indiana University where I completed 
+                    my Bachelor of Science in Informatics with a Business Minor in 2025, and am currently pursuing my 
+                    Master of Science in Information Systems (expected 2026). I've been recognized as a Hutton Honors College 
+                    student, Founders Scholar, Shoemaker Scholar, and have achieved Dean's List recognition.
+                </p>
+                
+                <h3>Professional Experience</h3>
+                <p>
+                    Through internships at leading organizations like Crowe (Technology Transformation), NielsenIQ 
+                    (Consulting Analysis), and Lovi.AI (Technology Startup), I've gained hands-on experience in AI 
+                    implementation, strategic consulting, and technology solutions. I've led development teams, 
+                    consulted for Fortune 500 clients, and designed innovative solutions that improve business processes.
+                </p>
+                
+                <h3>Professional Interests</h3>
+                <p>
+                    I'm particularly drawn to the intersection of technology and business strategy. My interests include:
+                </p>
+                <ul class="interests-list">
+                    <li><strong>Artificial Intelligence:</strong> Developing and implementing AI solutions for business optimization</li>
+                    <li><strong>Technology Consulting:</strong> Helping organizations leverage technology for strategic advantage</li>
+                    <li><strong>Data Analytics:</strong> Using predictive analytics and business intelligence to drive decisions</li>
+                    <li><strong>Leadership:</strong> Building and leading high-performing teams in technology environments</li>
+                    <li><strong>Innovation:</strong> Creating solutions that transform traditional business processes</li>
+                </ul>
+                
+                <h3>Goals & Aspirations</h3>
+                <p>
+                    As I complete my Master of Science in Information Systems at Indiana University, I'm focused on 
+                    advancing my career in technology consulting and AI implementation. My goal is to leverage my 
+                    experience with Fortune 500 clients and strategic development to drive innovation in enterprise 
+                    technology solutions.
+                </p>
+                
+                <p>
+                    Long-term, I aspire to lead technology transformation initiatives at the intersection of AI, 
+                    business strategy, and organizational development. I'm passionate about mentoring emerging 
+                    professionals and contributing to the advancement of ethical AI practices in business.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Personal Stats -->
+<section class="personal-stats">
+    <div class="container">
+        <h2 class="section-title">Professional Highlights</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">Degrees (BS '25, MS '26)</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">Fortune 500 Internships</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Team Members Led</span>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Academic Honors</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Values Section -->
+<section class="values-section">
+    <div class="container">
+        <h2 class="section-title">My Core Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Integrity</h3>
+                <p>Building trust through honest communication and ethical decision-making in all professional relationships.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Innovation</h3>
+                <p>Embracing creative thinking and new approaches to solve challenges and drive continuous improvement.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Collaboration</h3>
+                <p>Fostering teamwork and inclusive environments where diverse perspectives drive better outcomes.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-target"></i>
+                </div>
+                <h3>Excellence</h3>
+                <p>Striving for high-quality results and continuous learning to exceed expectations consistently.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Let's Connect</h2>
+            <p>Interested in learning more about my background or discussing potential opportunities?</p>
+            <div class="cta-buttons">
+                <a href="{{ url_for('resume') }}" class="btn btn-primary">View My Resume</a>
+                <a href="{{ url_for('contact') }}" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
