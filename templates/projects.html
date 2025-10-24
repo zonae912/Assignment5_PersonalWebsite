@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}Projects - Evan Zona{% endblock %}
+
 {% block description %}Showcase of Evan Zona's professional and academic projects with descriptions and links.{% endblock %}
 
 {% block content %}
@@ -9,158 +10,95 @@
     <div class="container">
         <h1>My Projects</h1>
         <p>A showcase of my professional work, academic projects, and personal initiatives</p>
+        <div class="resume-actions">
+            <a href="{{ url_for('add_project') }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Add New Project
+            </a>
+        </div>
     </div>
 </section>
 
-<!-- Projects Grid -->
+<!-- Projects Section -->
 <section class="projects-section">
     <div class="container">
         
-        <!-- Featured Project - Lovi.AI Website -->
-        <div class="project-card featured horizontal">
-            <div class="project-content">
-                <div class="project-category">Web Design & Development</div>
-                <h2>Lovi.AI - AI Startup Website Design & Development</h2>
-                <p class="project-description">
-                    Designed and helped develop the complete front-end for Lovi.AI, an innovative artificial intelligence 
-                    startup based in Madrid, Spain. Led the UI/UX design process from concept to implementation using Figma, 
-                    creating a modern, user-friendly interface that effectively communicates the company's AI solutions while 
-                    enhancing user engagement and conversion rates.
-                </p>
-                
-                <div class="project-details">
-                    <div class="project-timeline">
-                        <i class="fas fa-calendar"></i>
-                        <span>Duration: June 2023</span>
-                    </div>
-                    <div class="project-team">
-                        <i class="fas fa-users"></i>
-                        <span>Role: Lead Designer & Front-End Developer</span>
-                    </div>
-                    <div class="project-impact">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Impact: Enhanced user engagement & conversion</span>
-                    </div>
-                </div>
-
-                <div class="project-highlights">
-                    <h4>Key Achievements:</h4>
-                    <ul>
-                        <li>Designed complete UI/UX interface using Figma from initial wireframes to final mockups</li>
-                        <li>Collaborated with development team to implement responsive front-end code</li>
-                        <li>Created intuitive user flows that effectively showcase AI technology capabilities</li>
-                        <li>Developed brand-consistent visual design language and component library</li>
-                        <li>Optimized user experience for both technical and non-technical audiences</li>
-                        <li>Generated 30 new clients through strategic networking at startup conferences</li>
-                    </ul>
-                </div>
-
-                <div class="project-tech">
-                    <h4>Tools & Technologies Used:</h4>
-                    <div class="tech-tags">
-                        <span>Figma</span>
-                        <span>UI/UX Design</span>
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>Responsive Design</span>
-                        <span>User Experience</span>
-                        <span>Frontend Development</span>
-                        <span>Web Design</span>
-                    </div>
-                </div>
-
-                <div class="project-links-horizontal">
-                    <a href="https://lovi.ai/" class="btn btn-primary" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        Visit Website
-                    </a>
-                </div>
-                
-                <!-- Placeholder for website image -->
-                <div class="project-image-placeholder">
-                    <img src="{{ url_for('static', filename='images/LoviSC.png') }}" alt="Lovi.AI Website Screenshot">
-                </div>
+        {% if projects %}
+            <!-- Projects Table -->
+            <div class="projects-table-container">
+                <table class="projects-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Technologies</th>
+                            <th>Duration</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for project in projects %}
+                            <tr>
+                                <td class="project-image-cell">
+                                    <img src="{{ url_for('static', filename='images/' + project.image_filename) }}" 
+                                         alt="{{ project.title }}" 
+                                         class="project-thumbnail">
+                                </td>
+                                <td class="project-title-cell">
+                                    <strong>{{ project.title }}</strong>
+                                    {% if project.role %}
+                                        <br><small class="project-role">{{ project.role }}</small>
+                                    {% endif %}
+                                </td>
+                                <td class="project-description-cell">
+                                    {{ project.description[:200] }}{% if project.description|length > 200 %}...{% endif %}
+                                </td>
+                                <td class="project-category-cell">
+                                    {% if project.category %}
+                                        <span class="category-badge">{{ project.category }}</span>
+                                    {% else %}
+                                        <span class="text-muted">N/A</span>
+                                    {% endif %}
+                                </td>
+                                <td class="project-tech-cell">
+                                    {% if project.technologies %}
+                                        {{ project.technologies[:50] }}{% if project.technologies|length > 50 %}...{% endif %}
+                                    {% else %}
+                                        <span class="text-muted">N/A</span>
+                                    {% endif %}
+                                </td>
+                                <td class="project-duration-cell">
+                                    {{ project.duration or 'N/A' }}
+                                </td>
+                                <td class="project-link-cell">
+                                    {% if project.project_url %}
+                                        <a href="{{ project.project_url }}" target="_blank" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-external-link-alt"></i> View
+                                        </a>
+                                    {% else %}
+                                        <span class="text-muted">N/A</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
-        </div>
-
-        <!-- Senior Capstone Project -->
-        <div class="project-card featured horizontal">
-            <div class="project-content">
-                <div class="project-category">Senior Capstone</div>
-                <h2>Mingle Beyond - Social Platform for Recent Graduates</h2>
-                <p class="project-description">
-                    Mingle Beyond is a comprehensive web platform designed to help recent college graduates stay 
-                    connected and supported during the major transition from college to professional life. The platform 
-                    addresses feelings of isolation and uncertainty by providing a space where users can meet new people, 
-                    explore shared interests, and build genuine connections within a supportive community.
-                </p>
-                
-                <div class="project-details">
-                    <div class="project-timeline">
-                        <i class="fas fa-calendar"></i>
-                        <span>Duration: Fall 2024 - Spring 2025</span>
-                    </div>
-                    <div class="project-team">
-                        <i class="fas fa-users"></i>
-                        <span>Team: 3 Members (Team 27)</span>
-                    </div>
-                    <div class="project-course">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>Course: INFO Capstone 2025</span>
-                    </div>
+        {% else %}
+            <!-- No Projects Message -->
+            <div class="no-projects">
+                <div class="no-projects-icon">
+                    <i class="fas fa-folder-open"></i>
                 </div>
-
-                <div class="project-highlights">
-                    <h4>Key Features:</h4>
-                    <ul>
-                        <li>Personalized user profiles with photos and personal information</li>
-                        <li>Event RSVP system with attendee visibility</li>
-                        <li>Friend request system and private messaging functionality</li>
-                        <li>Hobby-based resource discovery and activity recommendations</li>
-                        <li>Featured events and curated content on homepage</li>
-                        <li>Google Maps integration for location-based features</li>
-                        <li>Google Login authentication for seamless user experience</li>
-                    </ul>
-                </div>
-
-                <div class="project-approach">
-                    <h4>Design Philosophy:</h4>
-                    <p>
-                        The platform emphasizes user-friendly design, accessibility, and personal expression. 
-                        Built with a focus on simplicity and inclusivity, Mingle Beyond enables users to navigate 
-                        with ease and truly make the platform their own. The goal is to make social support easier 
-                        to find and more authentic for young adults navigating life after college.
-                    </p>
-                </div>
-
-                <div class="project-tech">
-                    <h4>Technologies Used:</h4>
-                    <div class="tech-tags">
-                        <span>PHP</span>
-                        <span>MySQL</span>
-                        <span>Google Maps API</span>
-                        <span>Google Login</span>
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
-                        <span>Responsive Design</span>
-                    </div>
-                </div>
-
-                <div class="project-links-horizontal">
-                    <a href="https://zion-zion.webapps.iu.edu/info-capstone-2025/mingle-beyond#project" class="btn btn-primary" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                        Visit Website
-                    </a>
-                </div>
-                
-                <!-- Placeholder for website image -->
-                <div class="project-image-placeholder">
-                    <img src="{{ url_for('static', filename='images/mingleSC.png') }}" alt="Mingle Beyond Platform Screenshot">
-                </div>
+                <h3>No Projects Yet</h3>
+                <p>Start by adding your first project!</p>
+                <a href="{{ url_for('add_project') }}" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Add Your First Project
+                </a>
             </div>
-        </div>
-
+        {% endif %}
+        
     </div>
 </section>
 

@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Project - Evan Zona{% endblock %}
+{% block description %}Add a new project to your portfolio{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>Add New Project</h1>
+        <p>Fill out the form below to add a new project to your portfolio</p>
+    </div>
+</section>
+
+<!-- Add Project Form Section -->
+<section class="contact-main">
+    <div class="container">
+        <div class="add-project-layout">
+            
+            <!-- Instructions -->
+            <div class="form-instructions">
+                <h2>Project Submission Guidelines</h2>
+                <p>Please provide complete information about your project. Fields marked with * are required.</p>
+                
+                <div class="instruction-box">
+                    <h3><i class="fas fa-info-circle"></i> Image Instructions</h3>
+                    <ul>
+                        <li>Upload your project image to the <code>static/images/</code> folder first</li>
+                        <li>Then enter just the filename (e.g., <code>myproject.png</code>) in the form</li>
+                        <li>Supported formats: JPG, PNG, GIF</li>
+                        <li>Recommended size: 800x600 pixels or similar aspect ratio</li>
+                    </ul>
+                </div>
+
+                <div class="instruction-box">
+                    <h3><i class="fas fa-lightbulb"></i> Tips</h3>
+                    <ul>
+                        <li>Write a clear, concise project title</li>
+                        <li>Provide a detailed description of your work</li>
+                        <li>List technologies separated by commas</li>
+                        <li>Include a live URL if available</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Project Form -->
+            <div class="contact-form-section">
+                <h2>Project Details</h2>
+                
+                <form class="contact-form" action="{{ url_for('add_project') }}" method="POST" id="projectForm">
+                    
+                    <div class="form-group">
+                        <label for="title">Project Title *</label>
+                        <input type="text" id="title" name="title" required 
+                               placeholder="e.g., E-Commerce Website Redesign">
+                        <div class="error-message" id="titleError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Project Description *</label>
+                        <textarea id="description" name="description" required rows="6"
+                                  placeholder="Describe your project, your role, and the impact it had..."></textarea>
+                        <div class="error-message" id="descriptionError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image_filename">Image Filename *</label>
+                        <input type="text" id="image_filename" name="image_filename" required 
+                               placeholder="e.g., project-screenshot.png">
+                        <small>Upload the image to <code>static/images/</code> folder first, then enter the filename here</small>
+                        <div class="error-message" id="imageError"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <input type="text" id="category" name="category" 
+                                   placeholder="e.g., Web Development, Data Science">
+                        </div>
+                        <div class="form-group">
+                            <label for="duration">Duration</label>
+                            <input type="text" id="duration" name="duration" 
+                                   placeholder="e.g., Jan 2024 - Mar 2024">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="technologies">Technologies Used</label>
+                        <input type="text" id="technologies" name="technologies" 
+                               placeholder="e.g., Python, Flask, PostgreSQL, React">
+                        <small>Separate multiple technologies with commas</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">Your Role</label>
+                        <input type="text" id="role" name="role" 
+                               placeholder="e.g., Lead Developer, Team Member">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="project_url">Project URL (optional)</label>
+                        <input type="url" id="project_url" name="project_url" 
+                               placeholder="https://example.com">
+                        <small>Link to live project, GitHub repo, or demo</small>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Add Project
+                        </button>
+                        <a href="{{ url_for('projects') }}" class="btn btn-secondary">
+                            <i class="fas fa-times"></i>
+                            Cancel
+                        </a>
+                    </div>
+
+                    <p class="form-note">
+                        * Required fields. Your project will be immediately visible on the Projects page after submission.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Client-side form validation
+    document.getElementById('projectForm').addEventListener('submit', function(e) {
+        let isValid = true;
+        
+        // Validate title
+        const title = document.getElementById('title');
+        if (!title.value.trim()) {
+            isValid = false;
+        }
+        
+        // Validate description
+        const description = document.getElementById('description');
+        if (!description.value.trim()) {
+            isValid = false;
+        }
+        
+        // Validate image filename
+        const imageFilename = document.getElementById('image_filename');
+        if (!imageFilename.value.trim()) {
+            isValid = false;
+        }
+        
+        // If form is valid, show confirmation
+        if (isValid) {
+            // Optional: Show a confirmation or loading state
+        }
+    });
+</script>
+{% endblock %}

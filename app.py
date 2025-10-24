@@ -1,8 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from datetime import datetime
+from DAL import DAL
 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-here-change-in-production'  # Change this in production
+
+# Initialize Database Access Layer
+dal = DAL()
 
 # Routes
 @app.route('/')
@@ -19,7 +23,9 @@ def resume():
 
 @app.route('/projects')
 def projects():
-    return render_template('projects.html')
+    """Display all projects from the database"""
+    all_projects = dal.get_all_projects()
+    return render_template('projects.html', projects=all_projects)
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
@@ -65,6 +71,54 @@ def contact():
 @app.route('/thankyou')
 def thankyou():
     return render_template('thankyou.html')
+
+@app.route('/add-project', methods=['GET', 'POST'])
+def add_project():
+    """Form to add new projects to the database"""
+    if request.method == 'POST':
+        # Get form data
+        title = request.form.get('title')
+        description = request.form.get('description')
+        image_filename = request.form.get('image_filename')
+        category = request.form.get('category')
+        technologies = request.form.get('technologies')
+        project_url = request.form.get('project_url')
+        duration = request.form.get('duration')
+        role = request.form.get('role')
+        
+        # Validation
+        errors = []
+        if not title:
+            errors.append('Project title is required')
+        if not description:
+            errors.append('Project description is required')
+        if not image_filename:
+            errors.append('Image filename is required')
+        
+        if errors:
+            for error in errors:
+                flash(error, 'error')
+            return render_template('add_project.html')
+        
+        # Add project to database
+        try:
+            project_id = dal.add_project(
+                title=title,
+                description=description,
+                image_filename=image_filename,
+                category=category,
+                technologies=technologies,
+                project_url=project_url,
+                duration=duration,
+                role=role
+            )
+            flash(f'Project "{title}" added successfully!', 'success')
+            return redirect(url_for('projects'))
+        except Exception as e:
+            flash(f'Error adding project: {str(e)}', 'error')
+            return render_template('add_project.html')
+    
+    return render_template('add_project.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
