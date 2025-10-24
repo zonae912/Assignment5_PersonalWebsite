@@ -121,4 +121,5 @@ def add_project():
     return render_template('add_project.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    # Use 0.0.0.0 to make the app accessible from outside the container
+    app.run(host='0.0.0.0', debug=False, port=5000)
